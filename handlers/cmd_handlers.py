@@ -34,3 +34,9 @@ async def cmd_courses(message: Message):
             courses[course['Ccy']] = float(course['Rate'])
             txt += f"1 {course['CcyNm_EN']} - {course['Rate']} so'm\n"
     await message.answer(text=txt)
+
+
+@cmd_router.message(Command('dollar'))
+async def cmd_dollar(message: Message):
+    txt = f"1 USD dollar = {courses['USD']} so'm"
+    await message.reply(txt)
