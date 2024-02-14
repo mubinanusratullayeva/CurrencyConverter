@@ -13,7 +13,7 @@ from handlers.msg_handlers import msg_router
 async def main():
     bot = Bot(token=TOKEN, parse_mode=ParseMode.HTML)
     dp = Dispatcher()
-    dp.include_router(cmd_router, msg_router)
+    dp.include_routers(cmd_router, msg_router)
     await dp.start_polling(bot)
 
 

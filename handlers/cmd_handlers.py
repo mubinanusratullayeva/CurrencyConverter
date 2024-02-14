@@ -1,11 +1,12 @@
-import requests
 from aiogram.filters import CommandStart, Command
 from aiogram.types import Message
 from aiogram import Router
 
-from config import courses
+from config import courses, response
 
 cmd_router = Router()
+
+
 
 @cmd_router.message(CommandStart())
 async def cmd_start(message: Message):
@@ -27,16 +28,36 @@ async def cmd_help(message: Message):
 
 @cmd_router.message(Command('courses'))
 async def cmd_courses(message: Message):
-    response = requests.get('https://cbu.uz/uz/arkhiv-kursov-valyut/json/')
     txt = "Today's exchange rates:\n"
     for course in response.json():
         if course['Ccy'] in ['USD', 'EUR', 'RUB']:
             courses[course['Ccy']] = float(course['Rate'])
-            txt += f"1 {course['CcyNm_EN']} - {course['Rate']} so'm\n"
+            txt += f"1 {course['CcyNm_EN']} - {course['Rate']} sum\n"
     await message.answer(text=txt)
 
 
 @cmd_router.message(Command('dollar'))
 async def cmd_dollar(message: Message):
-    txt = f"1 USD dollar = {courses['USD']} so'm"
+    txt = ''
+    for course in response.json():
+        if course['Ccy'] in 'USD':
+            txt = f"1 {course['CcyNm_EN']} = {course['Rate']} sum"
+    await message.reply(txt)
+
+
+@cmd_router.message(Command('euro'))
+async def cmd_dollar(message: Message):
+    txt = ''
+    for course in response.json():
+        if course['Ccy'] in 'EUR':
+            txt = f"1 {course['CcyNm_EN']} = {course['Rate']} sum"
+    await message.reply(txt)
+
+
+@cmd_router.message(Command('rouble'))
+async def cmd_dollar(message: Message):
+    txt = ''
+    for course in response.json():
+        if course['Ccy'] in 'RUB':
+            txt = f"1 {course['CcyNm_EN']} = {course['Rate']} sum"
     await message.reply(txt)
