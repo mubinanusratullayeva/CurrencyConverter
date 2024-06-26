@@ -7,10 +7,9 @@ from config import courses, response
 cmd_router = Router()
 
 
-
 @cmd_router.message(CommandStart())
 async def cmd_start(message: Message):
-    txt = ("""Hello, 
+    txt = ("""Hello,
             welcome to ExchangeRate Bot!
             for help send /help command to us""")
     await message.answer(text=txt)

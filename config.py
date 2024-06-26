@@ -8,4 +8,8 @@ courses = {
     'RUB': 0
 }
 
-response = requests.get('https://cbu.uz/uz/arkhiv-kursov-valyut/json/')
+# proxies = {
+#     'https': 'https://52.183.8.192:3128'
+# }
+
+response = requests.get('https://v6.exchangerate-api.com/v6/996a84d6ad5bf8b94d0960af/latest/USD')
