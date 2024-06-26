@@ -9,7 +9,6 @@ from handlers.cmd_handlers import cmd_router
 from handlers.msg_handlers import msg_router
 
 
-
 async def main():
     bot = Bot(token=TOKEN, parse_mode=ParseMode.HTML)
     dp = Dispatcher()
@@ -23,4 +22,3 @@ if __name__ == '__main__':
         asyncio.run(main())
     except KeyboardInterrupt:
         print('Bot stop')
-

@@ -12,4 +12,7 @@ courses = {
 #     'https': 'https://52.183.8.192:3128'
 # }
 
-response = requests.get('https://v6.exchangerate-api.com/v6/996a84d6ad5bf8b94d0960af/latest/USD')
+response_uzs = requests.get('https://v6.exchangerate-api.com/v6/996a84d6ad5bf8b94d0960af/latest/UZS')
+response_usd = requests.get('https://v6.exchangerate-api.com/v6/996a84d6ad5bf8b94d0960af/latest/USD')
+response_rub = requests.get('https://v6.exchangerate-api.com/v6/996a84d6ad5bf8b94d0960af/latest/RUB')
+response_eur = requests.get('https://v6.exchangerate-api.com/v6/996a84d6ad5bf8b94d0960af/latest/EUR')
